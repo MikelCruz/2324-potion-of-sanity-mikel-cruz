@@ -17,14 +17,4 @@ const fetchAsyncPotions = async() => {
 fetchAsyncPotions();
 
 
-// REGLAS 
 
-// Si dos ingredientes tienen Efectos iguales la pocion sera exitosa:
-    // Efecto positivo - el resultado sera una pocion (POTION)
-    // Efecto negativo - el resultado sera un veneno (POISON)
-
-// En caso contrario, la pocion saldra - FALLIDA y devolveremos un objeto de la clase:
-// FailedPotion.
-
-
-// Comentario prueba 
