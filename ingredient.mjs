@@ -1,6 +1,6 @@
 import Effect from "./effect.mjs";
 
-export default class  
+export default class Ingredient 
 {
     constructor(name, effects, value, weight ){
         this.name       = name;     // BD
