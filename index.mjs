@@ -8,32 +8,36 @@ const execute = async () => {
        
        //Creamos los ingredientes 
        const ingredients = Ingredients.load(data);
+       showIngredients(ingredients.ingredients);
     }
     catch (error){
         console.log(error.message)
     }
 }
 
+execute();
 
 
+// ECHARLE UN OJO A LA FUNCION!!
+function showIngredients(ingredients){
 
-// const getAllPotions = async () => {
-//     return fetch('https://raw.githubusercontent.com/zsiciarz/skyrim-alchemy-toolbox/master/data/ingredients.json')
-//     .then(response => response.json())
-// }
+    ingredients.forEach(ingredient => {
 
+        for(let atribute in ingredient){
 
+            if(atribute === `effects`){
 
-// const fetchAsyncPotions = async() => {
-//     try {
-//         const getPotions = await getAllPotions()
-//         console.log(getPotions);
-//     } catch (error){
-//         console.log(error.message)
-//     }
-// }
-
-// fetchAsyncPotions();
+                let effectString = ``;
+                ingredient[atribute].forEach(effect => { effectString += ` ${effect.name},` })
+                
+                console.log(`${atribute}:${effectString}`)
+            }
+            
+            else
+            console.log(`${atribute}: ${ingredient[atribute]}`)
+        }
+    });
+}
 
 
 // REGLAS 
