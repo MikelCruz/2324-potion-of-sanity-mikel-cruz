@@ -1,5 +1,6 @@
 import { getData } from "./service.mjs";
 import Ingredients from "./ingredient.mjs";
+import Cauldron from "./cauldron.mjs";
 
 const execute = async () => {
     try
@@ -9,6 +10,8 @@ const execute = async () => {
        //Creamos los ingredientes 
        const ingredients = Ingredients.load(data);
        showIngredients(ingredients.ingredients);
+
+       const cauldron = new Cauldron(ingredients.ingredients)
     }
     catch (error){
         console.log(error.message)
