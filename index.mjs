@@ -1,27 +1,42 @@
 import { getData } from "./service.mjs";
-import Ingredients from "./ingredient.mjs";
+import Ingredients from "./ingredients.mjs";
 import Cauldron from "./cauldron.mjs";
 
 const execute = async () => {
-    try
-    {
-       const data = await getData();
-       
-       //Creamos los ingredientes 
-       const ingredients = Ingredients.load(data);
-       showIngredients(ingredients.ingredients);
+    try{
+        const data = await getData();
 
-       const cauldron = new Cauldron(ingredients.ingredients)
-    }
-    catch (error){
-        console.log(error.message)
+        //Creación de ingredientes
+        const ingredients = Ingredients.load(data);
+        showIngredients(ingredients.ingredients);
+
+        //Creación de cauldron
+        const cauldron = new Cauldron(ingredients);
+
+        //Crear Pociones
+        
+        console.log(`Potions`)
+        console.log(`-------------------------------`)
+
+        const potion1 = cauldron.createPotion("Bear Claws", "Bee");
+        showPotion(potion1);
+
+        const potion2 = cauldron.createPotion("Chicken's Egg", "Chaurus Eggs")
+        showPotion(potion2);
+
+        const potion3 = cauldron.createPotion("Chaurus Eggs", "Bleeding Crown")
+        showPotion(potion3);
+
+        const potion4 = cauldron.createPotion("Nightshade", "Ectoplasm")
+        showPotion(potion4);
+
+    }catch(error){
+        console.log(error);
     }
 }
 
 execute();
 
-
-// ECHARLE UN OJO A LA FUNCION!!
 function showIngredients(ingredients){
 
     ingredients.forEach(ingredient => {
@@ -40,6 +55,21 @@ function showIngredients(ingredients){
             console.log(`${atribute}: ${ingredient[atribute]}`)
         }
     });
+}
+
+
+function showPotion(potion){
+
+    for(let atribute in potion){
+
+        if(atribute != `name`){
+
+            console.log(`${atribute}:    ${potion[atribute]}`)
+        }else{
+            console.log(`${potion[atribute]}`)
+        }
+    }
+    console.log(`-------------------------------`)
 }
 
 
