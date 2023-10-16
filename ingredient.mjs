@@ -9,7 +9,7 @@ export default class Ingredient
         this.weight     = weight;   // BD
     }
 
-    static from(name, effects, value, weight){
+    static from({name, effects, value, weight}){
         return new Ingredient (
             name,
             effects.map (effect => Effect.from(effect)),

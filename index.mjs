@@ -54,6 +54,7 @@ function showIngredients(ingredients){
             else
             console.log(`${atribute}: ${ingredient[atribute]}`)
         }
+        console.log("===================================")
     });
 }
 
