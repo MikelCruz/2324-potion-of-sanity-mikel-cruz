@@ -1,20 +1,39 @@
-const getAllPotions = async () => {
-    return fetch('https://raw.githubusercontent.com/zsiciarz/skyrim-alchemy-toolbox/master/data/ingredients.json')
-    .then(response => response.json())
-}
+import { getData } from "./service.mjs";
+import Ingredients from "./ingredient.mjs";
 
-
-
-const fetchAsyncPotions = async() => {
-    try {
-        const getPotions = await getAllPotions()
-        console.log(getPotions);
-    } catch (error){
+const execute = async () => {
+    try
+    {
+       const data = await getData();
+       
+       //Creamos los ingredientes 
+       const ingredients = Ingredients.load(data);
+    }
+    catch (error){
         console.log(error.message)
     }
 }
 
-fetchAsyncPotions();
+
+
+
+// const getAllPotions = async () => {
+//     return fetch('https://raw.githubusercontent.com/zsiciarz/skyrim-alchemy-toolbox/master/data/ingredients.json')
+//     .then(response => response.json())
+// }
+
+
+
+// const fetchAsyncPotions = async() => {
+//     try {
+//         const getPotions = await getAllPotions()
+//         console.log(getPotions);
+//     } catch (error){
+//         console.log(error.message)
+//     }
+// }
+
+// fetchAsyncPotions();
 
 
 // REGLAS 
